@@ -17,6 +17,7 @@ func init() {
 	caddy.DefaultConfigFile = "Corefile"
 	caddy.Quiet = true // don't show init stuff from caddy
 	setVersion()
+	PrintGitVars()
 
 	flag.StringVar(&conf, "conf", "", "Corefile to load (default \""+caddy.DefaultConfigFile+"\")")
 	flag.BoolVar(&plugins, "plugins", false, "List installed plugins")
@@ -181,3 +182,13 @@ var (
 	// Gitcommit contains the commit where we built CoreDNS from.
 	GitCommit string
 )
+
+func PrintGitVars() {
+	fmt.Println("appVersion: ", appVersion)
+	fmt.Println("devBuild: ", devBuild)
+	fmt.Println("buildDate: ", buildDate)
+	fmt.Println("gitTag: ", gitTag)
+	fmt.Println("gitNearestTag: ", gitNearestTag)
+	fmt.Println("gitShortStat: ", gitShortStat)
+	fmt.Println("GitCommit: ", GitCommit)
+}
